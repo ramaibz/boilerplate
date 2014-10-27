@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 angular
   .module('app', ['ui.router', 'ngResource', 'app.factory'])
   .config(routes);
@@ -20,3 +21,6 @@ function userFactory($resource) {
         }
     })
 }
+=======
+angular.module('newsPortal', ['ui.router']);
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375

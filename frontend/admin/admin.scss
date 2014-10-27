@@ -1,9 +1,14 @@
 $font-stack:    Helvetica, sans-serif;
+<<<<<<< HEAD
 $primary-color: #999;
+=======
+$primary-color: #333;
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
+<<<<<<< HEAD
 }
 
 .admin {
@@ -20,4 +25,6 @@ body {
 
 .main-admin div {
   padding: 0 20px;
+=======
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
 }

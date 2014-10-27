@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+<<<<<<< HEAD
     libs_files: {
       css: [
         'bootstrap/dist/css/bootstrap.min.css',
@@ -30,16 +31,31 @@ module.exports = function(grunt) {
       },
       dev: ['gruntfile.js', '<%=libs_files.app %>'],
       dist: ['dist/js/*.js']
+=======
+    jshint: {
+      options: {
+        reporter: require('jshint-stylish')
+      },
+      dev: ['gruntfile.js', 'frontend/app.js', 'frontend/**/*.js', 'backend/**/*.js'],
+      build: ['dist/js/*.js']
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
     },
     uglify: {
       options: {
         mangle: false
       },
+<<<<<<< HEAD
       dist: {
         files: {
           'dist/js/ngapp.min.js' : 'dist/js/ngapp.js',
           'dist/js/module.min.js' : 'dist/js/module.js'
         },
+=======
+      build: {
+        files: {
+          'dist/js/ngapp.min.js' : ['frontend/app.js', 'frontend/**/controller.js', 'frontend/**/directive.js', 'frontend/**/factory.js', 'frontend/**/service.js']
+        }
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
       }
     },
     sass: {
@@ -57,12 +73,17 @@ module.exports = function(grunt) {
       }
     },
     autoprefixer: {
+<<<<<<< HEAD
       dist: {
+=======
+      build: {
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
         files: {
 
         }
       }
     },
+<<<<<<< HEAD
     concat: {
       libs: {
           src: '<%= libs_files.js %>',
@@ -85,11 +106,21 @@ module.exports = function(grunt) {
           cwd: 'dist',
           src: ['css/*.css'],
           dest: 'dist/css',
+=======
+    cssmin: {
+      build: {
+        files: [{
+          expand: true,
+          cwd: 'dist',
+          src: ['css/**/*.css'],
+          dest: 'dist/',
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
           ext: '.min.css'
         }]
       }
     },
     copy: {
+<<<<<<< HEAD
       csslibs: {
         expand: true,
         cwd: '../libs',
@@ -122,10 +153,30 @@ module.exports = function(grunt) {
       vendor: 'dist/vendor',
       html: ['dist/views', 'dist/index.html'],
       all: 'dist'
+=======
+      srcfile: [{
+
+      }]
+    },
+    browserify: {
+      build: {
+        files: {
+          'dist/js/libs.js' : [
+            '../libs/angular/angular.min.js', 
+            '../libs/angular-ui-router/release/angular-ui-router.min.js',
+            '../libs/jquery/dist/jquery.min.js'
+          ]
+        }
+      }
+    },
+    clean: {
+      dist: 'dist'
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
     },
     watch: {
       css: {
         files: ['frontend/**/*.scss'],
+<<<<<<< HEAD
         tasks: ['clean:css', 'sass', 'concat:css', 'cssmin'],
         options: {
           livereload: true
@@ -141,6 +192,13 @@ module.exports = function(grunt) {
       html: {
         files: ['frontend/index.html', 'frontend/**/*.html'],
         tasks: ['clean:html', 'copy:mainhtml', 'copy:html'],
+=======
+        tasks: ['sass']
+      },
+      js: {
+        files: ['gruntfile.js', 'frontend/app.js', 'frontend/**/controller.js', 'frontend/**/directive.js', 'frontend/**/factory.js', 'frontend/**/service.js'],
+        tasks: ['jshint', 'uglify'],
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
         options: {
           livereload: true
         }
@@ -168,13 +226,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+<<<<<<< HEAD
   grunt.loadNpmTasks('grunt-contrib-concat');
+=======
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-nodemon');
 
 // tasks
   grunt.registerTask('default', ['jshint', 'concurrent']);
+<<<<<<< HEAD
   grunt.registerTask('dist', ['clean', 'jshint', 'concat', 'sass', 'copy', 'uglify', 'cssmin']);
+=======
+  grunt.registerTask('build', ['clean', 'jshint', 'browserify', 'uglify', 'sass']);
+>>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
   
 };
