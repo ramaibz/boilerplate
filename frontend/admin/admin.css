@@ -1,0 +1,21 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #999;
+}
+
+.admin {
+  background: #4DAF7C;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.admin ul > li > a {
+  color: white;
+}
+
+.main-admin div {
+  padding: 0 20px;
+}
+
+/*# sourceMappingURL=admin.css.map */
