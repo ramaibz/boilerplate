@@ -1,6 +1,5 @@
 'use strict';
 
-<<<<<<< HEAD
 var prf = 'Nodame: ';
 
 // INIT
@@ -66,11 +65,3 @@ require('./backend/routes/user.js')(app);
 var server = app.listen(app.get('port'), function() {
     console.log(prf + 'Hello, you\'re at port ' + server.address().port );
 });
-=======
-var express = require('express'),
-    bodyParser = require('body-parser');
-
-var app = express();
-
-app.use(express.static(__dirname + '/dist'));
->>>>>>> 1b1616cddd305a048d98e9c834535e1a96f72375
