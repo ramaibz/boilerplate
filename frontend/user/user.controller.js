@@ -9,7 +9,7 @@ function UserController(UserFactory) {
     vm.deleteUser = function(user) {
         user.$delete(function() {
             console.log('deleted');
-            $window.location.href = "";
+            vm.users;
         });
     }
 
