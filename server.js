@@ -12,9 +12,14 @@ var prf = 'Nodame: ';
     cookies     = require('cookie-parser'),
     bodyParser  = require('body-parser'),
     morgan      = require('morgan'),
-    flash       = require('connect-flash');
+    flash       = require('connect-flash'),
+    helmet      = require('helmet');
 
 var dbConfig = require('./config/db.js');
+
+
+// SECURITY
+app.use(helmet());
 
 app.set('port', process.env.PORT || 8800);
 app.set('views', __dirname + '/dist/');
