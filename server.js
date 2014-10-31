@@ -3,40 +3,41 @@
 var prf = 'Nodame: ';
 
 // INIT
-    var express = require('express'),
-    app         = express(),
-    router      = express.router,
+    var flash   = require('connect-flash'), 
+    express     = require('express'),
     mongoose    = require('mongoose'),
     passport    = require('passport'),
     session     = require('express-session'),
     cookies     = require('cookie-parser'),
     bodyParser  = require('body-parser'),
-    morgan      = require('morgan'),
-    flash       = require('connect-flash'),
+    morgan      = require('morgan'),    
     helmet      = require('helmet');
 
 var dbConfig = require('./config/db.js');
 
+var app         = express();
 
 // SECURITY
 app.use(helmet());
+
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.set('port', process.env.PORT || 8800);
 app.set('views', __dirname + '/dist/');
 app.use('/css', express.static(__dirname + '/dist/css'));
 app.use('/js', express.static(__dirname + '/dist/js'));
 
-app.all('/administrasi/*', function(req, res, next) {
-    res.sendFile('views/admin.html', { root: __dirname + '/dist' });
+app.all('/admin/*', function(req, res, next) {
+    res.render('views/admin.html');
 });
-app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(__dirname + '/dist'));
-app.use(cookies());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookies('C0oKi3SP4rs3R'));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-app.use(flash());
 app.use(session({ 
     secret: '5E5SiONS3c12eT',
     resave: true,
@@ -46,6 +47,8 @@ app.use(session({
 // PASSPORT
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
 
 // CONNECT DB
 mongoose.connect(dbConfig.url, function(err, res) {

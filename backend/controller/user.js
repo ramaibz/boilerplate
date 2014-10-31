@@ -46,14 +46,17 @@ var User = require('../model/user');
     User.findOne({ username: userValue.username }, function(err, user) {
       if (err) throw err;
       if(user) {
-        res.send({ stat: 'User already exist', user: user })
+        //res.send({ stat: 'User already exist', user: user });
+        //res.render('views/admin.html', { message: 'ssss' })
+        res.send({ 
+          error: 'User already exist'
+        })
       }
       else {
         userValue.save(function(err) {
           if (err) throw err;
           else {            
             console.log('user added');
-            res.redirect('/administrasi/user');
           }
         })             
       }
@@ -71,7 +74,7 @@ var User = require('../model/user');
       return user.remove(function(err) {
         if(!err) {
           console.log(user + ' removed');
-          res.redirect('/administrasi/user');
+          res.redirect('/admin/user');
         }
         else {
           throw err;

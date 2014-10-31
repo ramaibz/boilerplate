@@ -4,16 +4,17 @@ module.exports = function(app, passport) {
   })
 
   app.get('/login', function(req, res){
-    res.render('views/admin.html');
-  })
-
-  app.get('/administrasi', function(req, res) {
     res.render('views/login.html');
   })
 
-  app.get('/administrasi/dashboard', function(req, res) {
+  app.get('/admin/dashboard', function(req, res) {
     res.render('views/admin.html');
     console.log('menu dashboard');
+  })
+
+  app.get('/admin', function(req, res) {
+    res.render('views/admin.html', { message: 'sss' });
+    console.log('hgaaaaaa');
   })
 
   app.get('/logout', function(req, res) {

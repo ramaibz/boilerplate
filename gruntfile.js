@@ -133,7 +133,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['frontend/app.js', 'frontend/routes/routes.js', 'frontend/**/*.controller.js', 'frontend/**/directive.js', 'frontend/**/factory.js', 'frontend/**/service.js'],
-        tasks: ['clean:js', 'jshint', 'concat', 'uglify'],
+        tasks: ['clean:js', 'jshint', 'concat'],
         options: {
           livereload: true
         }

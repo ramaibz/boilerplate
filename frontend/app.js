@@ -14,7 +14,7 @@ angular
   .factory('UserFactory', userFactory)
 
 function userFactory($resource) {
-  return $resource('api/administrasi/user/:id', { id: '@_id' }, {
+  return $resource('/api/admin/user/:id', { id: '@_id' }, {
         update: {
             method: 'PUT'
         }

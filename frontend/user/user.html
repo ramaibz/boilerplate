@@ -1,13 +1,6 @@
-<div class="container">
-
-<div class="col-sm-12">
-
+<div class="col-md-12">
   <h1><span class="fa fa-sign-in"></span> Add User</h1>
 
-  <!-- show any messages that come back with authentication -->
-  <% if (message.length > 0) { %>
-    <div class="alert alert-danger"><%= message %></div>
-  <% } %>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -25,7 +18,7 @@
           <td>{{ user.password }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.access }}</td>
-          <td><a ng-click="vm.deleteUser(user)" href="">delete {{ user._id }}</a></td>
+          <td><a ng-click="vm.deleteUser(user)" href="">Delete</a></td>
         </tr>
       </tbody>
     </table>
@@ -33,7 +26,7 @@
 
   <hr>
   <!-- LOGIN FORM -->
-  <form action="/api/administrasi/user" method="post">
+  <form action="/api/admin/user" method="post">
     <div class="form-group">
       <label>Username</label>
       <input type="text" class="form-control" name="username">
@@ -55,7 +48,5 @@
   </form>
 
   <hr>
-
-</div>
 
 </div>
