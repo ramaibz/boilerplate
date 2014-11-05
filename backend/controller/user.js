@@ -40,21 +40,23 @@ var User = require('../model/user');
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
-      access: req.body.userprivilege
+      access: req.body.access
     });
 
     User.findOne({ username: userValue.username }, function(err, user) {
-      if (err) throw err;
+      if (err) throw err.errors;
       if(user) {
         //res.send({ stat: 'User already exist', user: user });
         //res.render('views/admin.html', { message: 'ssss' })
-        res.send({ 
+        res.json({ 
           error: 'User already exist'
         })
       }
       else {
         userValue.save(function(err) {
-          if (err) throw err;
+          if (err) {
+            res.json({ error: err.errors });
+          }
           else {            
             console.log('user added');
           }

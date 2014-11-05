@@ -5,6 +5,13 @@ angular
 function UserController(UserFactory, $scope) {
     var vm = this;
     vm.users = UserFactory.query();
+    vm.user = new UserFactory;
+
+    vm.addUser = function() {
+        vm.user.$save(function() {
+            $state.go('user');
+        })
+    }
 
     vm.deleteUser = function(user) {
         user.$delete(function() {
@@ -12,5 +19,4 @@ function UserController(UserFactory, $scope) {
         });
     }
 
-    console.log(vm.users);
 }

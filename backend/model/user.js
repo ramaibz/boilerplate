@@ -3,10 +3,11 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  username: { type: String, require: true },
-  password: { type: String, require: true },
-  email: { type: String, require: true },
-  access: { type: String, require: true }
+  username: { type: String, required: 'Please input username', trim: true },
+  password: { type: String, required: 'Please input password', trim: true },
+  email: { type: String, required: 'Please input the email', trim: true },
+  access: { type: String, required: 'Please input access', trim: true },
+  join: { type: Date, default: Date.now }
 })
 
 userSchema.pre('save', function(callback) {
@@ -26,6 +27,10 @@ userSchema.pre('save', function(callback) {
         });
       });
 })
+
+/*userSchema.path('username').validate(function(user) {
+  return user.length < 5
+}, 'Username is less than 5');*/
 
 userSchema.methods.hashing = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
