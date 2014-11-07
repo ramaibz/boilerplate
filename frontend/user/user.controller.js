@@ -2,14 +2,14 @@ angular
     .module('app')
     .controller('UserController', UserController);
 
-function UserController(UserFactory, $scope) {
+function UserController(UserFactory, $state) {
     var vm = this;
     vm.users = UserFactory.query();
     vm.user = new UserFactory;
 
     vm.addUser = function() {
         vm.user.$save(function() {
-            $state.go('user');
+            //$state.go('user');
         })
     }
 
