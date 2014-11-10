@@ -12,6 +12,7 @@ angular
 angular
   .module('app.factory', ['ngResource'])
   .factory('UserFactory', userFactory)
+  .service('PopUp', confirmDialog);
 
 function userFactory($resource) {
   return $resource('/api/admin/user/:id', { id: '@_id' }, {
@@ -19,4 +20,10 @@ function userFactory($resource) {
             method: 'PUT'
         }
     })
+}
+
+function confirmDialog($window) {
+  this.konfirm = function(msg) {
+    return $window.confirm(msg);
+  }
 }

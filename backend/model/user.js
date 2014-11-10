@@ -2,30 +2,54 @@ var mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs'),
     Schema = mongoose.Schema;
 
-function validator(val) {
-  return val.length <= 3 ? false : true;
+/*function isNotNull(val) {
+  return !val ? false : true;
+}
+function isLessThan3(val) {
+  if(!val) {
+    return false;
+  }
+  else if(val.length <= 3) {
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 function isNotA(val) {
-  return val == 'aaa' ? false : true;
-}
+  return val == 'aaaaa' ? false : true;
+}*/
 
-var many = [
-  { validator: validator, msg: 'length less than 5' },
+/*var many = [
+  { validator: isNotNull, msg: 'Empty value' },
+  { validator: isLessThan3, msg: 'length less than 5' },
   { validator: isNotA, msg: 'Your name is aaa'}
-]
+]*/
 
 var userSchema = new Schema({
-  username: { type: String, required: 'Please input your username', trim: true, validate: many },
-  password: { type: String, required: 'Please input password', trim: true },
-  email: { type: String, required: 'Please input the email', trim: true },
-  access: { type: String, required: 'Please input access', trim: true },
-  join: { type: Date, default: Date.now }
+  username: { type: String, trim: true, required: true },
+  password: { type: String, trim: true, required: true },
+  email: { type: String, trim: true, required: true },
+  access: { type: String, trim: true, required: true },
+  joindate: { type: Date, default: Date.now }
 })
 
-/*userSchema.path('username').validate(function(user) {
-  return !!user.length > 5;
-}, 'Username is empty!');*/
+userSchema.path('username').validate(function(val) {
+  if(!val) {
+    return false
+  }
+  else if(val.length <= 3) {
+    return false
+  }
+  else if(val == 'aaaa') {
+    return false
+  }
+  else {
+    return true
+  }
+  //return val.length <= 3 && val == "aaa" ? false : true;
+}, 'Invalid data format' )
 
 userSchema.pre('save', function(callback) {
     var user = this;
@@ -44,8 +68,6 @@ userSchema.pre('save', function(callback) {
         });
       });
 })
-
-
 
 userSchema.methods.hashing = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)

@@ -48,17 +48,15 @@ var User = require('../model/user');
       if(user) {
         //res.send({ stat: 'User already exist', user: user });
         //res.render('views/admin.html', { message: 'ssss' })
-        res.json({ 
-          error: 'User already exist'
-        })
+        res.json({ error: 'User already exist' })
       }
       else {
-        userValue.save(function(err) {
+        userValue.save(function(err, data) {
           if (err) {
             res.json({ error: err.errors });
           }
-          else {            
-            console.log('user added');
+          else {
+            res.json({ success: 'Success' })
           }
         })             
       }

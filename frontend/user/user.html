@@ -17,7 +17,7 @@
           <td>{{ user.username }}</td>
           <td>{{ user.password }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.access }}</td>
+          <td>{{ user.access }} - <span ng-if="user.access == vm.accessOption[user.access].opt">{{ vm.accessOption[user.access].val }}</span></td>
           <td><a ng-click="vm.deleteUser(user)" href="">Delete</a></td>
         </tr>
       </tbody>
@@ -26,27 +26,30 @@
 
   <hr>
   <!-- LOGIN FORM -->
-  <form method="post" ng-submit="vm.addUser()">
+  <form method="post" ng-submit="vm.addUser()" name="inputForm" novalidate>
     <div class="form-group">
       <label>Username</label>
-      <input type="text" class="form-control" name="username" ng-model="vm.user.username">
+      <input type="text" class="form-control" name="username" ng-model="vm.user.username" required>
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" class="form-control" name="password" ng-model="vm.user.password">
+      <input type="password" class="form-control" name="password" ng-model="vm.user.password" required>
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="email" class="form-control" name="email" ng-model="vm.user.email">
+      <input type="email" class="form-control" name="email" ng-model="vm.user.email" required>
     </div>
     <div class="form-group">
-      <label>User Previlege</label>
-      <input type="text" class="form-control" name="access" ng-model="vm.user.access">
+      <label>User Privilege</label>
+      <select name="access" ng-model="vm.user.access" ng-options="item.opt as item.val for item in vm.accessOption" class="form-control"></select>
     </div>
 
-    <button type="submit" class="btn btn-warning btn-lg">Add</button>
+    <button type="submit" class="btn btn-warning btn-lg">Save</button>
   </form>
 
   <hr>
+    {{ inputForm.email.$error }}
     {{ vm.user }}
+  <hr>
+    {{ vm.error.username }}
 </div>
