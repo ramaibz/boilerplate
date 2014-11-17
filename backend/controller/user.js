@@ -56,7 +56,8 @@ var User = require('../model/user');
             res.json({ error: err.errors });
           }
           else {
-            res.json({ success: 'Success' })
+            res.json({ success: 'Success' });
+            console.log(data);
           }
         })             
       }

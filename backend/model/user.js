@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs'),
+    moment = require('moment'),
     Schema = mongoose.Schema;
 
 /*function isNotNull(val) {
@@ -74,7 +75,7 @@ userSchema.methods.hashing = function(password) {
 }
 
 userSchema.methods.validating  = function(password) {
-  return bcrypt.compareSync(password, this.local.password)
+  return bcrypt.compareSync(password, this.password)
 }
 
 module.exports = mongoose.model('User', userSchema);

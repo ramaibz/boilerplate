@@ -26,7 +26,7 @@
 
   <hr>
   <!-- LOGIN FORM -->
-  <form method="post" ng-submit="vm.addUser()" name="inputForm" novalidate>
+  <form method="post" ng-submit="inputForm.$valid && vm.addUser()" name="inputForm" novalidate>
     <div class="form-group">
       <label>Username</label>
       <input type="text" class="form-control" name="username" ng-model="vm.user.username" required>
@@ -41,14 +41,15 @@
     </div>
     <div class="form-group">
       <label>User Privilege</label>
-      <select name="access" ng-model="vm.user.access" ng-options="item.opt as item.val for item in vm.accessOption" class="form-control"></select>
+      <select name="access" ng-model="vm.user.access" ng-options="item.opt as item.val for item in vm.accessOption" class="form-control">
+        <option value="">-- select role --</option>
+      </select>
     </div>
 
     <button type="submit" class="btn btn-warning btn-lg">Save</button>
   </form>
 
   <hr>
-    {{ inputForm.email.$error }}
     {{ vm.user }}
   <hr>
     {{ vm.error.username }}

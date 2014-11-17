@@ -27,20 +27,18 @@ app.set('port', process.env.PORT || 8800);
 app.set('views', __dirname + '/dist/');
 app.use('/css', express.static(__dirname + '/dist/css'));
 app.use('/js', express.static(__dirname + '/dist/js'));
-app.all('/admin/*', function(req, res, next) {
-    res.render('views/admin.html');
-});
+
 app.use(express.static(__dirname + '/dist'));
 
-app.use(cookies('C0oKi3SP4rs3R'));
+app.use(cookies('C0oKi3SP4rs3R', { httpOnly: true, secure: true }));
 app.use(session({ 
     secret: '5E5SiONS3c12eT',
     resave: true,
     saveUninitialized: true 
 }));
+app.use(flash());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(flash());
 app.use(morgan('dev'));
 
 // PASSPORT
@@ -58,6 +56,7 @@ mongoose.connect(dbConfig.url, function(err, res) {
 });
 
 // BACKEND ROUTING
+require('./config/passport.js')(passport);
 require('./backend/routes/routes.js')(app, passport);
 require('./backend/routes/user.js')(app);
 

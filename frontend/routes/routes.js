@@ -11,6 +11,12 @@ function routes($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'UserController',
       controllerAs: 'vm'
     })
+    .state('article', {
+      url: '/admin/article',
+      templateUrl: 'views/article.html',
+      controller: 'ArticleController',
+      controllerAs: 'vm'
+    })
 
   $locationProvider.html5Mode(true);
 }
