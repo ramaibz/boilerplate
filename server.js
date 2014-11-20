@@ -59,6 +59,7 @@ mongoose.connect(dbConfig.url, function(err, res) {
 require('./config/passport.js')(passport);
 require('./backend/routes/routes.js')(app, passport);
 require('./backend/routes/user.js')(app);
+require('./backend/routes/article.js')(app);
 
 // SERVER LISTEN
 var server = app.listen(app.get('port'), function() {

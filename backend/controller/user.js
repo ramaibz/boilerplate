@@ -57,7 +57,6 @@ var User = require('../model/user');
           }
           else {
             res.json({ success: 'Success' });
-            console.log(data);
           }
         })             
       }

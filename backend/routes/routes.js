@@ -7,6 +7,10 @@ module.exports = function(app, passport) {
     res.render('views/admin.html', { user: req.user });
   })
 
+  app.get('/admin/*', isAuth, function(req, res, next) {
+    res.render('views/admin.html', { user: req.user });
+  });
+
   app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/login');
@@ -43,12 +47,6 @@ module.exports = function(app, passport) {
         return res.redirect('/admin');
       });
     })(req, res, next);
-  });
-
-
-
-  app.get('/admin/*', isAuth, function(req, res, next) {
-    res.render('views/admin.html', { user: req.user });
   });
 
   function isAuth(req, res, next) {
