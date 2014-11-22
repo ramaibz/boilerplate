@@ -72,7 +72,7 @@ module.exports = function(grunt) {
         src: '<%= libs_files.app %>',
         dest: 'dist/js/ngapp.js'
       },
-      css: {
+      cssFiles: {
         src: ['frontend/**/*.css'],
         dest: 'dist/css/styles.css'
       }
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
           src: 'frontend/index.html',
           dest: 'dist/'
       },
-      html: {
+      htmlFiles: {
         expand: true,
         flatten: true,
         cwd: 'frontend',
@@ -117,30 +117,30 @@ module.exports = function(grunt) {
       }
     },*/
     clean: {
-      css: 'dist/css',
-      js: 'dist/js',
+      cssFiles: 'dist/css',
+      jsFiles: 'dist/js',
       vendor: 'dist/vendor',
-      html: ['dist/views', 'dist/index.html'],
+      htmlFiles: ['dist/views', 'dist/index.html'],
       all: 'dist'
     },
     watch: {
-      css: {
+      cssFile: {
         files: ['frontend/**/*.scss'],
-        tasks: ['clean:css', 'sass', 'concat:css', 'cssmin'],
+        tasks: ['clean:cssFiles', 'sass:dev', 'concat:cssFiles', 'cssmin'],
         options: {
           livereload: true
         }
       },
-      js: {
+      jsFile: {
         files: ['frontend/app.js', 'frontend/routes/routes.js', 'frontend/**/*.controller.js', 'frontend/**/directive.js', 'frontend/**/factory.js', 'frontend/**/service.js'],
-        tasks: ['clean:js', 'jshint', 'concat'],
+        tasks: ['clean:jsFiles', 'jshint', 'concat'],
         options: {
           livereload: true
         }
       },
-      html: {
+      htmlFile: {
         files: ['frontend/index.html', 'frontend/**/*.html'],
-        tasks: ['clean:html', 'copy:mainhtml', 'copy:html'],
+        tasks: ['clean:htmlFiles', 'copy:mainhtml', 'copy:htmlFiles'],
         options: {
           livereload: true
         }

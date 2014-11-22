@@ -2,7 +2,7 @@
 <html ng-App="app">
 <head>  
   <meta charset="utf-8" />
-  <title>News Portal</title>
+  <title>Boilerplate</title>
   <meta name="description" content="No longer than 155 characters." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,15 +13,77 @@
  
 <body>
   <base href="/">
-  <div class="container">
+  <div class="container-fluid">    
     <div class="row">
-      <h1>RAMAIBZ NEWS</h1>
-      <a ui-sref="/admin">Administrasi</a>
-      <a ui-sref="/user">User</a>
+      <div class="logo">
+        <ul>
+          <li><h1>LETS GO</h1></li>
+          <li><h5>Together with your friends, your lovers, <br> or maybe a stranger?</h5></li>
+          <hr>
+          <li>
+            <form action="/login" method="post" novalidate>
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" required>
+                 <div></div> 
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" required>
+              </div>
+
+              <button type="submit" class="btn btn-warning btn-lg">Login</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div id="cover"></div>
+    </div>
+    <div class="row row-1">
+      <div class="middle">
+        <div class="col-md-4">
+          <div class="box">
+            <h2>Find your travelmate</h2>
+            <p>Do you ever have an idea of how to travel with a stranger?</p>
+          </div>
+          
+        </div>
+        <div class="col-md-4">
+          <div class="box">
+            <h2>Post your journey</h2>
+            <p>Do you ever have an idea of how to travel with a stranger?</p>
+          </div>
+          
+        </div>
+        <div class="col-md-4">
+          <div class="box">
+            <h2>Search your destination</h2>
+            <p>Do you ever have an idea of how to travel with a stranger?</p>
+          </div>
+          
+        </div>
+      </div>    
+    </div>
+    <div class="row row-2">
+      <hr>
+      <div class="container">
+        <div class="col-md-12">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+        </div>
+      </div>
+          
+    </div>
+    <div class="row">
+      <footer>
+        letsgoind
+      </footer>
     </div>
   </div>
-  
- 
   <script type="text/javascript" src="/js/module.js"></script>
   <script type="text/javascript" src="/js/ngapp.js"></script>
 

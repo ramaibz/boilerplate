@@ -16,8 +16,6 @@ getArticle = function(req, res) {
                     tag: article[i].tag
                 };
             }
-            console.log(articles);
-            //console.log('created By: ' + article.createdBy);
             res.json(articles);
         }
     })

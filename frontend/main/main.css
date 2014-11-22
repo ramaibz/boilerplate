@@ -1,3 +1,23 @@
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC);
+* {
+  list-style-type: none;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+}
+
+.flex, .row-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vert-centering, .row-1, .row-2 {
+  display: flex;
+  align-items: center;
+}
+
 nav ul {
   margin: 0;
   padding: 0;
@@ -10,6 +30,69 @@ nav a {
   display: block;
   padding: 6px 12px;
   text-decoration: none;
+}
+
+#cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 60%;
+  width: 100%;
+  background: url("http://i.huffpost.com/gen/1451959/thumbs/o-TRAVELERS-facebook.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: -1;
+}
+
+.logo {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  text-align: right;
+  height: 60%;
+  position: absolute;
+}
+.logo ul {
+  position: absolute;
+  right: 120px;
+  height: 100%;
+  width: 400px;
+}
+.logo ul li:first-child {
+  margin-top: 25%;
+}
+
+.middle {
+  width: 80%;
+}
+
+.row-1 {
+  position: absolute;
+  width: 100%;
+  top: 60%;
+  color: white;
+  background: #f0ad4e;
+  height: 40%;
+}
+
+.row-2 {
+  position: absolute;
+  height: 40%;
+  top: 100%;
+  color: black;
+  background: none;
+}
+
+.box {
+  text-align: center;
+}
+.box h2 {
+  border-bottom: 1px solid white;
+  padding: 10px;
+}
+.box p {
+  font-size: 1.5em;
 }
 
 /*# sourceMappingURL=main.css.map */

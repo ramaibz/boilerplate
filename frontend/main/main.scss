@@ -1,3 +1,32 @@
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC);
+
+* {
+  list-style-type: none;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+}
+@mixin full-page($top, $color, $bg) {
+    @extend .vert-centering;
+    top: $top;
+    color: $color;
+    background: $bg;
+}
+
+.flex {
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+}
+
+.vert-centering {
+    display: flex;
+    align-items: center;
+}
+
+// ============================
+
 nav {
   ul {
     margin: 0;
@@ -13,3 +42,71 @@ nav {
     text-decoration: none;
   }
 }
+
+#cover {
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 60%; width: 100%;
+  background: url('http://i.huffpost.com/gen/1451959/thumbs/o-TRAVELERS-facebook.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: -1;
+}
+
+.logo {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  text-align: right;
+  height: 60%;
+  position: absolute;
+
+  ul {
+    position: absolute;
+    right: 120px;
+    //top: 15%;
+    //background: black;
+    height: 100%;
+    width: 400px;
+    li {
+      &:first-child {
+        margin-top: 25%;
+      }
+      
+      form {
+        
+      }
+    }
+  }
+}
+
+.middle {
+  width: 80%;
+}
+
+.row-1 {
+  position: absolute;
+  width: 100%;
+  @include full-page(60%, white, #f0ad4e);
+  @extend .flex;
+  height: 40%;
+}
+
+.row-2 {
+  position: absolute;
+  height: 40%;
+  @include full-page(100%, black, none);
+}
+
+.box {
+  text-align: center;
+  h2 {
+    border-bottom: 1px solid white;
+    padding: 10px;
+
+  }
+  p {
+    font-size: 1.5em;
+  }
+}
+
