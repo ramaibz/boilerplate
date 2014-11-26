@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ui.router', 'ngResource', 'app.factory'])
+  .module('app', ['ui.router', 'ui.bootstrap', 'ngResource', 'app.factory'])
   .config(routes);
 
 

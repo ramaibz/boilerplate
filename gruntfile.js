@@ -3,16 +3,18 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     libs_files: {
       css: [
-        'bootstrap/dist/css/bootstrap.min.css',
-        'font-awesome/css/font-awesome.min.css',
+        '../libs/bootstrap/dist/css/bootstrap.css',
+        '../libs/font-awesome/css/font-awesome.css'
+        //'font-awesome/fonts/*'
+      ],
+      ext: [
         'font-awesome/fonts/*'
       ],
       js: [
         '../libs/angular/angular.js', 
         '../libs/angular-ui-router/release/angular-ui-router.js',
         '../libs/angular-resource/angular-resource.js',
-        '../libs/jquery/dist/jquery.js',
-        '../libs/bootstrap/dist/js/bootstrap.js'
+        '../libs/angular-bootstrap/ui-bootstrap.js'
       ],
       app: [
         'frontend/app.js',
@@ -56,6 +58,17 @@ module.exports = function(grunt) {
         }]
       }
     },
+    imagemin: {
+      img: {
+        files: [{
+          expand: true,
+          flatten: true,
+          cwd: 'frontend',
+          src: ['images/*.{png, jpg, gif}', 'images/**/*.{png, jpg, gif}'],
+          dest: 'dist/imgs'
+        }]
+      }
+    },
     autoprefixer: {
       dist: {
         files: {
@@ -75,6 +88,10 @@ module.exports = function(grunt) {
       cssFiles: {
         src: ['frontend/**/*.css'],
         dest: 'dist/css/styles.css'
+      },
+      vendorFiles: {
+        src: '<%= libs_files.css %>',
+        dest: 'dist/css/vendor.css'
       }
     },
     cssmin: {
@@ -92,8 +109,9 @@ module.exports = function(grunt) {
     copy: {
       csslibs: {
         expand: true,
+        flatten: true,
         cwd: '../libs',
-        src: '<%= libs_files.css %>',
+        src: '<%= libs_files.ext %>',
         dest: 'dist/vendor'
       },
       mainhtml: {
@@ -108,6 +126,13 @@ module.exports = function(grunt) {
         cwd: 'frontend',
         src: ['**/*.html', '!index.html'],
         dest: 'dist/views'
+      },
+      svgFiles: {
+        expand: true,
+        flatten: true,
+        cwd: 'frontend',
+        src: ['images/*.svg', 'images/**/*.svg'],
+        dest: 'dist/imgs'
       }
     },
 /*    browserify: {
@@ -126,7 +151,7 @@ module.exports = function(grunt) {
     watch: {
       cssFile: {
         files: ['frontend/**/*.scss'],
-        tasks: ['clean:cssFiles', 'sass:dev', 'concat:cssFiles', 'cssmin'],
+        tasks: ['clean:cssFiles', 'sass:dev', 'concat:cssFiles', 'concat:vendorFiles', 'cssmin'],
         options: {
           livereload: true
         }
@@ -144,6 +169,14 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         }
+      },
+      imgFiles: {
+        files: ['frontend/images/!*.{png, jpg, gif}', 'frontend/images/**/!*.{png, jpg, gif}'],
+        tasks: ['copy:imgFiles'],
+      },
+      svgFiles: {
+        files: ['frontend/images/*.{png, jpg, gif}', 'frontend/images/**/*.{png, jpg, gif}'],
+        tasks: ['imagemin']
       }
     },
     nodemon: {
@@ -169,12 +202,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-nodemon');
 
 // tasks
   grunt.registerTask('default', ['jshint', 'concurrent']);
-  grunt.registerTask('dist', ['clean', 'jshint', 'concat', 'sass', 'copy', 'uglify', 'cssmin']);
+  grunt.registerTask('dist', ['clean', 'jshint', 'concat', 'sass', 'copy', 'uglify', 'cssmin', 'imagemin']);
   
 };

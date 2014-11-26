@@ -29,11 +29,30 @@ function isNotA(val) {
 ]*/
 
 var userSchema = new Schema({
-  username: { type: String, trim: true, required: true },
-  password: { type: String, trim: true, required: true },
-  email: { type: String, trim: true, required: true },
-  access: { type: String, trim: true, required: true },
-  joindate: { type: Date, default: Date.now }
+  username: { 
+    type: String, 
+    trim: true, 
+    required: true 
+  },
+  password: { 
+    type: String, 
+    trim: true, 
+    required: true 
+  },
+  email: { 
+    type: String, 
+    trim: true, 
+    required: true 
+  },
+  access: { 
+    type: String, 
+    trim: true, 
+    required: true 
+  },
+  joindate: { 
+    type: Date, 
+    default: Date.now 
+  }
 })
 
 userSchema.path('username').validate(function(val) {

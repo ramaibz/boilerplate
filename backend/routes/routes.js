@@ -13,7 +13,11 @@ module.exports = function(app, passport) {
 
   app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/login');
+    res.redirect('/');
+  })
+
+  app.get('/signup', function(req, res) {
+    res.render('views/signup.html', { username: '' });
   })
 
   app.get('/login', function(req, res){

@@ -4,11 +4,8 @@
   list-style-type: none;
 }
 
-h1 {
-  font-family: 'Amatic SC', cursive;
-}
 @mixin full-page($top, $color, $bg) {
-    @extend .vert-centering;
+    //@extend .vert-centering;
     top: $top;
     color: $color;
     background: $bg;
@@ -84,29 +81,55 @@ nav {
   width: 80%;
 }
 
+.row {
+  width: 100%;
+}
+
 .row-1 {
   position: absolute;
-  width: 100%;
-  @include full-page(60%, white, #f0ad4e);
+  @include full-page(60%, #000, #f0ad4e);
   @extend .flex;
   height: 40%;
+
+  h2 {
+    color: #fff;
+    font-weight: 500;
+  }
 }
 
 .row-2 {
   position: absolute;
   height: 40%;
-  @include full-page(100%, black, none);
+  @include full-page(100%, black, green);
 }
 
 .box {
   text-align: center;
+  height: auto;
   h2 {
-    border-bottom: 1px solid white;
-    padding: 10px;
-
+    //padding: 10px 0;
   }
   p {
     font-size: 1.5em;
+    width: 250px;
+    margin: 0 auto;
+    color: #4f4f4f;
+  }
+
+  img {
+    width: 100px; height: 100px;
+  }
+
+  hr {
+    width: 70%;
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); 
   }
 }
 
+.footer {
+  position: absolute;
+  @include full-page(100%, white, #4f4f4f);
+  height: auto;
+}
