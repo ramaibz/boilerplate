@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <meta charset="utf-8" />
+  <title>Sign Up</title>
+  <meta name="description" content="No longer than 155 characters." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <link rel="stylesheet" type="text/css" href="css/vendor.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
+  
+</head>
+ 
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+  <h1><span class="fa fa-sign-in"></span> SMS</h1>
+
+  <!-- LOGIN FORM -->
+  <form action="/api/sms" method="post" novalidate>
+    <div class="form-group">
+      <label>Recipient :</label>
+      <input type="text" class="form-control" name="recipient" required>
+       <div></div> 
+    </div>
+    <div class="form-group">
+      <label>Content :</label>
+      <input type="text" class="form-control" name="content" required>
+    </div>
+
+    <button type="submit" class="btn btn-warning btn-lg">SEND</button>
+  </form>
+
+  <hr>
+
+</div>
+
+</div>
+<script type="text/javascript" src="../js/module.js"></script> 
+</body>
+</html>
